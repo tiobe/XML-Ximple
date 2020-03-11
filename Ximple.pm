@@ -278,24 +278,14 @@ sub SetXMLDeclHandler {
 
 sub parse_xml_file {
   @tree = ({content=>[]});
-  eval { local $SIG{'__DIE__'}; $p->parsefile(shift)};;
-  if ($@) {
-    #warn $@;
-    return;
-  } else {
-    return $tree[0]->{content};
-  }
+  $p->parsefile(@_);
+  return $tree[0]->{content};
 }
 
 sub parse_xml {
   @tree = ({content=>[]});
-  eval { local $SIG{'__DIE__'}; $p->parse(shift)};;
-  if ($@) {
-    #warn $@;
-    return;
-  } else {
-    return $tree[0]->{content};
-  }
+  $p->parse(@_);
+  return $tree[0]->{content};
 }
 
 ######################################################################
